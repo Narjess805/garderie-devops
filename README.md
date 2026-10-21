@@ -1,4 +1,4 @@
-# 🧸 Ma Garderie — Projet DevOps & Cloud
+#  Ma Garderie — Projet DevOps & Cloud
 
 > Application Web (Next.js + Express) déployée via une chaîne CI/CD complète :
 > **GitHub → Jenkins → Docker Hub → Vagrant → Ansible → Docker Compose**
@@ -27,7 +27,7 @@
 
 ---
 
-## 1. 🎯 Présentation
+## 1.  Présentation
 
 **Ma Garderie** est une landing page responsive pour une garderie d'enfants. Elle affiche dynamiquement les informations et les services récupérés depuis un backend REST.
 
@@ -64,7 +64,7 @@
 
 ---
 
-## 3. 🏗️ Architecture
+## 3.  Architecture
 
 ### Chaîne CI/CD
 
@@ -97,7 +97,7 @@ flowchart LR
 
 ---
 
-## 4. 📁 Structure du projet
+## 4.  Structure du projet
 
 ```
 garderie-devops/
@@ -135,7 +135,7 @@ curl http://192.168.56.10:5000/api/garderie
 
 ---
 
-## 6. 🚀 Lancement en local (Docker Compose)
+## 6.  Lancement en local (Docker Compose)
 
 ```bash
 git clone https://github.com/Narjess805/garderie-devops.git
@@ -150,7 +150,7 @@ Arrêt : `docker compose down`
 
 ---
 
-## 7. 🖥️ Création et provisioning de la VM
+## 7.  Création et provisioning de la VM
 
 ### Caractéristiques de la VM
 
@@ -214,12 +214,12 @@ systemctl status docker
 | 6 | Push Frontend | Publication sur Docker Hub |
 | 7 | Push Backend | Publication sur Docker Hub |
 
-> 🔒 Si le test échoue, le pipeline s'interrompt : aucune image n'est construite ni publiée.
+>  Si le test échoue, le pipeline s'interrompt : aucune image n'est construite ni publiée.
 > Les identifiants Docker Hub sont gérés exclusivement par **Jenkins Credentials** (jamais en clair dans le dépôt).
 
 ---
 
-## 9. 🐳 Images Docker Hub
+## 9.  Images Docker Hub
 
 | Service | Image | Lien |
 |---|---|---|
@@ -228,7 +228,7 @@ systemctl status docker
 
 ---
 
-## 10. 🚢 Déploiement avec Docker Compose
+## 10.  Déploiement avec Docker Compose
 
 Le déploiement utilise **uniquement les images publiées sur Docker Hub** (aucune reconstruction locale).
 
@@ -250,7 +250,7 @@ curl http://localhost:5000/api/activites
 
 ---
 
-## 11. 🌐 Accès à l'application
+## 11.  Accès à l'application
 
 | Ressource | URL |
 |---|---|
@@ -263,7 +263,7 @@ L'application est accessible depuis toute machine du même réseau via l'adresse
 
 ---
 
-## 12. 🌿 Workflow Git
+## 12.  Workflow Git
 
 | Branche | Contenu | Fusion |
 |---|---|---|
@@ -275,7 +275,7 @@ L'application est accessible depuis toute machine du même réseau via l'adresse
 
 ---
 
-## 13. 📸 Captures d'écran
+## 13. Captures d'écran
 
 ### Pipeline Jenkins exécuté avec succès
 ![Jenkins](screenshots/jenkins-success.png)
@@ -297,7 +297,7 @@ L'application est accessible depuis toute machine du même réseau via l'adresse
 
 ---
 
-## 14. 👤 Contact
+## 14.  Contact
 
 - **Responsable** : Narjess Dabbech
 - **Téléphone** : 27 003 391
