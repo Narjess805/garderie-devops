@@ -1,0 +1,64 @@
+---
+- name: Mettre à jour le cache apt
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: Installer prérequis
+  apt:
+    name: [ca-certificates, curl, gnupg, lsb-release]
+    state: present
+
+- name: Créer /etc/apt/keyrings
+  file:
+    path: /etc/apt/keyrings
+    state: directory
+    mode: '0755'
+
+- name: Ajouter clé GPG Docker
+  shell: |
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | \
+    gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+    chmod a+r /etc/apt/keyrings/docker.gpg
+  args:
+    creates: /etc/apt/keyrings/docker.gpg
+
+- name: Ajouter dépôt Docker
+  apt_repository:
+    repo: "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+    state: present
+    filename: docker
+
+- name: Installer Docker + Compose plugin
+  apt:
+    name: [docker-ce, docker-ce-cli, containerd.io, docker-buildx-plugin, docker-compose-plugin]
+    state: present
+    update_cache: yes
+
+- name: Démarrer et activer Docker
+  service:
+    name: docker
+    state: started
+    enabled: yes
+
+- name: Ajouter user au groupe docker
+  user:
+    name: "{{ docker_user }}"
+    groups: docker
+    append: yes
+
+- name: Vérifier Docker
+  command: docker --version
+  register: docker_version
+  changed_when: false
+
+- name: Vérifier Compose
+  command: docker compose version
+  register: compose_version
+  changed_when: false
+
+- name: Afficher versions
+  debug:
+    msg:
+      - "Docker  : {{ docker_version.stdout }}"
+      - "Compose : {{ compose_version.stdout }}"

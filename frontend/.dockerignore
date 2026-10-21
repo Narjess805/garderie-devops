@@ -1,0 +1,12 @@
+node_modules
+.next
+npm-debug.log
+.git
+.gitignore
+__tests__
+__mocks__
+jest.config.js
+jest.setup.js
+babel.config.js
+Dockerfile
+.dockerignore
