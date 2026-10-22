@@ -10,10 +10,11 @@ app.use(express.json());
 const garderie = {
   nom: "Ma Garderie",
   slogan: "Un cocon pour grandir heureux",
-  adresse: "12 rue des Lilas, 75011 Paris",
-  telephone: "+33 1 23 45 67 89",
-  email: "contact@magarderie.fr",
-  horaires: "Lundi - Vendredi : 7h30 - 18h30"
+  adresse: "Sousse, Tunisie",
+  telephone: "27 003 391",
+  email: "narjessdabbech3@gmail.com",
+  horaires: "Lundi - Vendredi : 7h30 - 18h30",
+  responsable: "Narjess Dabbech"
 };
 
 const services = [

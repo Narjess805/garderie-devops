@@ -1,11 +1,8 @@
-FROM node:20-alpine AS deps
+FROM node:20-alpine AS builder
 WORKDIR /app
 COPY package*.json .npmrc ./
 RUN npm install --no-audit --no-fund
 
-FROM node:20-alpine AS builder
-WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 ARG NEXT_PUBLIC_API_URL=http://backend:5000
 ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
